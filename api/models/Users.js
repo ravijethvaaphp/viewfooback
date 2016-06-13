@@ -63,13 +63,13 @@ module.exports = {
                         statusCode: sails.config.statusCodes.normalError
                     });
                 }
-                var newPassword = commons.generateRandomString()
+                var newPassword = commons.generateRandomString(6)
                 var updateData = data.pop();
                 updateData.password = newPassword;
                 //   var updateData = {id: data.id, password: newPassword};
                 userDataEmail = {email: updateData.email, subject: "Forgot Password", name: updateData.firstname + " " + updateData.lastname, message: null};
                 updateData.save(function (errUpdate, dataUpdate) {
-                    console.log()
+                 //   console.log()
                     if (errUpdate) {
                         return cb({status: false,
                             message: "Problem with service",
@@ -83,8 +83,10 @@ module.exports = {
                             content: "your new password is <b>" + newPassword + "</b>"
 
                         }
-                        console.log(userDataEmail);
-                        userDataEmail.message = mailService.mailTemplate(mailServiceData);
+                    
+                      var messageData = mailService.mailTemplate(mailServiceData);
+                          //console.log(messageData);
+                          userDataEmail['message']=messageData;
                         mailService.sendEMail(userDataEmail, function (data) {
 
                             return cb({status: true,

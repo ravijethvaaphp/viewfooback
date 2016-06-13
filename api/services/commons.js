@@ -1,6 +1,6 @@
 var randomstring = require("randomstring");
 module.exports = {
-    generateRandomString:function(){
-        return randomstring.generate();
+    generateRandomString:function(len){
+        return randomstring.generate(len);
     }
 }

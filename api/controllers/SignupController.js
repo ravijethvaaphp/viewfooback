@@ -1,11 +1,14 @@
 module.exports = {
     RegisterUser: function (req, res) {
+        console.log(req.body);
         var registerData = eval(req.body);
-        registerData.activationlink = commons.generateRandomString();
-
+        console.log(registerData);
+        console.log("============");
+        registerData['activationlink'] = commons.generateRandomString(20);
+console.log(registerData);
         var validateRegister = validationServiceV1.validateRegister(registerData);
         if (!validateRegister.status) {
-           res.status(data.statusCode);
+           res.status(validateRegister.statusCode);
             return res.send(validateRegister);
         } else {
             Users.Register(registerData, function (data, log) {

@@ -11,7 +11,7 @@ module.exports = {
             subject:data.subject, // Subject line 
             html:data.message// html body 
         };
-
+console.log(mailOptions);
         // send mail with defined transport object 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
@@ -44,244 +44,106 @@ module.exports = {
 
     },
     mailTemplate: function (data) {
-        var message = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
-        message +='<html xmlns="http://www.w3.org/1999/xhtml">';
-        message +='<head>';
-        message +='  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
-        message +='  <title>Forgot Password</title>';
-        message +='  <style type="text/css">';
-        message +='  body {';
-        message +='   padding-top: 0 !important;';
-        message +=' padding-bottom: 0 !important;';
-        message +=' padding-top: 0 !important;';
-        message +=' padding-bottom: 0 !important;';
-        message +=' margin:0 !important;';
-        message +=' width: 100% !important;';
-        message +=' -webkit-text-size-adjust: 100% !important;';
-        message +=' -ms-text-size-adjust: 100% !important;';
-        message +=' -webkit-font-smoothing: antialiased !important;';
-        message +=' }';
-        message +=' .tableContent img {';
-        message +=' border: 0 !important;';
-        message +=' display: block !important;';
-        message +=' outline: none !important;';
-        message +=' }';
+         var message = '<!doctype html>';
+        message += '<html>';
+        message += '<head>';
+        message += '<meta name="viewport" content="width=device-width">';
+        message += '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
+        message += '<title>Really Simple HTML Email Template</title>';
+        message += '<style>';
 
-        message +=' p, h2{';
-        message +=' margin:0;';
-        message +=' }';
+        message += '* { ';
+        message += 'font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; ';
+        message += ' font-size: 100%; ';
+        message += 'line-height: 1.6em; ';
+        message += 'margin: 0; ';
+        message += 'padding: 0; ';
+        message += '}';
 
-        message +=' div,p,ul,h2,h2{';
-        message +=' margin:0;';
-        message +=' }';
+        message += 'img { ';
+        message += 'max-width: 600px; ';
+        message += 'width: auto; ';
+        message += '}';
 
-        message +=' h2.bigger,h2.bigger{';
-        message +=' font-size: 32px;';
-        message +=' font-weight: normal;';
-        message +=' }';
+        message += 'body { -webkit-font-smoothing: antialiased;height: 100%;-webkit-text-size-adjust: none;width: 100% !important; }';
 
-        message +=' h2.big,h2.big{';
-        message +=' font-size: 21px;';
-        message +=' font-weight: normal;';
-        message +=' }';
+        message += 'a { color: #348eda; }';
 
-        message +=' a.link1{';
-        message +=' color:#006699;font-size:13px;font-weight:bold;text-decoration:none;';
-        message +=' }';
+        message += '.btn-primary { Margin-bottom: 10px;width: auto !important; }';
+        message += '.btn-primary td { background-color: #348eda;border-radius: 25px;font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-size: 14px;text-align: center;  vertical-align: top; }';
+        message += '.btn-primary td a { background-color: #348eda;border: solid 1px #348eda;border-radius: 25px;border-width: 10px 20px;display: inline-block;color: #ffffff;cursor: pointer;  font-weight: bold;  line-height: 2;text-decoration: none; }';
 
-        message +=' a.link2{';
-        message +=' padding:8px;background:#006699;font-size:13px;color:#ffffff;text-decoration:none;font-weight:bold;';
-        message +=' }';
+        message += '.last { margin-bottom: 0; }';
+        message += '.first { margin-top: 0; }';
 
-        message +=' a.link3{';
-        message +=' background:#006699; color:#ffffff; padding:8px 10px;text-decoration:none;font-size:13px;';
-        message +=' }';
-        message +=' .bgBody{';
-        message +=' background: #F6F6F6;';
-        message +=' }';
-        message +=' .bgItem{';
-        message +=' background: #ffffff;';
-        message +=' }';
-        message +=' </style>';
-        message +=' <script type="colorScheme" class="swatch active">';
-        message +='  {';
-        message +='   "name":"Default",';
-        message +='   "bgBody":"F6F6F6",';
-        message +='   "link":"006699",';
-        message +='  "color":"999999",';
-        message +='  "bgItem":"ffffff",';
-        message +=' "title":"555555"';
-        message +=' }';
-        message +=' </script>';
+        message += '.padding { padding: 10px 0; }';
+        message += 'table.body-wrap { padding: 20px;width: 100%; }';
+        message += 'table.body-wrap .container { border: 1px solid #f0f0f0; }';
+        message += 'table.footer-wrap {clear: both !important;width: 100%;}';
 
-        message +='  </head>';
-        message +='  <body paddingwidth="0" paddingheight="0"   style="padding-top: 0; padding-bottom: 0; padding-top: 0; padding-bottom: 0; background-repeat: repeat; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-font-smoothing: antialiased;" offset="0" toppadding="0" leftpadding="0">';
-        message +='  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tableContent bgBody"  style="background: #F6F6F6;" align="center"  style="font-family:helvetica, sans-serif;">';
+        message += '.footer-wrap .container p { color: #666666;font-size: 12px; }';
 
-
-
-        message +='  <tr>';
-        message +='  <td height="25" bgcolor="#43474A" colspan="3">   </td>';
-        message +='  </tr>';
-
-        message +='  <tr>';
-        message +='  <td height="130" bgcolor="#43474A">&nbsp;  </td>';
-        message +='  <td rowspan="2" width="600" valign="top">';
-        message +='  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" >';
-
-
-
-
-        message +='  <tr>';
-        message +='  <td class="movableContentContainer">';
-
-        message +='  <div class="movableContent">';
-        message +='  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" valign="top">';
-        message +='  <tr>';
-        message +='  <td bgcolor="#43474A" valign="top">';
-        message +='  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" valign="top">';
-        message +='  <tr>';
-        message +='  <td align="left" valign="middle" >';
-        message +='  <div class="contentEditableContainer contentImageEditable">';
-        message +='  <div class="contentEditable" >';
-        message +='  <img src="'+sails.config.siteUrl+'/assets/images/logo_viewfoo_gray.png" alt="Compagnie logo" data-default="placeholder" data-max-width="300"  height="40">';
-        message +='  </div>';
-        message +='  </div>';
-        message +='  </td>';
-
-        message +='  <td align="right" valign="top" >';
-        message +='  <div class="contentEditableContainer contentTextEditable" style="display:inline-block;">';
-        message +='  <div class="contentEditable" >';
-        message +='  <a target="_blank" href="[SHOWEMAIL]" style="color:#A8B0B6;font-size:13px;text-decoration:none;">Open in your browser   </a>';
-        message +='  </div>';
-        message +='  </div>';
-        message +='  </td>';
-        message +='  <td width="18" align="right" valign="top">';
-        message +='  <div class="contentEditableContainer contentImageEditable" style="display:inline-block;">';
-        message +='  <div class="contentEditable" >';
-       // message +='  <a target="_blank" href="[SHOWEMAIL]">   <img src="images/openBrowser.png" alt="open in browser image" data-default="placeholder" width="15" height="15" style="padding-left:10px;">   </a>';
-        message +='  </div>';
-        message +='  </div>';
-        message +='  </td>';
-        message +='  </tr>';
-        message +='  </table>';
-        message +='  </td>';
-        message +='  </tr>';
-        message +='  </table>';
-        message +='  </div>';
-        message +='  <div class="movableContent">';
-        message +='  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" valign="top">';
-        message +='  <tr>   <td height="20" </td></tr>';
-        message +='  </table>';
-        message +='  </div>';
-
-        message +='  <div class="movableContent">';
-        message +='  <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" valign="top" class="bgItem" >';
-        message +='  <tr><td colspan="3" height="16">&nbsp;</td></tr>';
-        message +='  <tr>';
-        message +='  <td width="16">&nbsp;</td>';
-        message +='  <td width="568">';
-        message +='  <table width="568" border="0" cellspacing="0" cellpadding="0" align="center" valign="top" >';
-        message +='  <tr>';
-        message +='  <td align="left" valign="top">';
-        message +='  <div class="contentEditableContainer contentTextEditable" >';
-        message +='  <div class="contentEditable" style="color:#555555;font-size:21px;font-weight:normal;">';
-        message +='  <h2 style="font-size: 21px;font-weight: normal;">'+data.messageHeading+'</h2>';
-        message +='          </div>';
-        message +='     </div>';
-        message +='   </td>';
-        message +='   </tr>';
-        message +='    <tr><td height="16">&nbsp;</td></tr>';
-        message +='   <tr>';
-        message +='        <td align="left" valign="top">';
-        message +='          <div class="contentEditableContainer contentTextEditable" >';
-        message +='           <div class="contentEditable" style="color:#999999;font-size:13px;line-height:19px;">';
-        message +='            <p >'+data.content+'</p>';
-        message +='        </div>';
-        message +='       </div>';
-        message +='     </td>';
-        message +='    </tr>';
-        message +='      <tr><td height="20">&nbsp;</td></tr>';
-        message +='      <tr>';
-        message +='       <td align="right" valign="top" style="padding-bottom:8px;">';
-        message +='        <div class="contentEditableContainer contentTextEditable" >';
-        message +='         <div class="contentEditable" >';
-        message +='          <a target="_blank" style="padding:8px;background:#006699;font-size:13px;color:#ffffff;text-decoration:none;font-weight:bold;" href="'+sails.config.siteUrl+'" style="padding:8px;background:#006699;font-size:13px;color:#ffffff;text-decoration:none;font-weight:bold;">'+sails.config.sitename+' →</a>';
-        message +='        </div>';
-        message +='       </div>';
-        message +='     </td>';
-        message +='  </tr>';
-        message +='         </table>';
-        message +='     </td>';
-        message +='     <td width="16">&nbsp;</td>';
-        message +='   </tr>';
-        message +='  <tr><td colspan="3" height="16">&nbsp;</td></tr>';
-        message +='       </table>';
-        message +='         </div>';
-
-        message +='       <div class="movableContent">';
-        message +='     <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" valign="top" class="bgBody" >';
-        message +='      <tr><td height="54" style="border-bottom:1px solid #DAE0E4">&nbsp;</td></tr>';
-
-        message +='      <tr><td height="28"></td></tr>';
-
-        message +='      <tr>';
-        message +='       <td valign="top" align="center">';
-        message + '<div class="contentEditableContainer contentTextEditable">';
-        message +='           <div class="contentEditable" style="color:#A8B0B6; font-size:13px;line-height: 16px;">';
-        message +='          <p >© 2015 ViewFoo, ALL RIGHTS RESERVED.';
-        message +='           </p>';
-        message +='         </div>';
-        message +='       </div>';
-        message +='       </td>';
-        message +='    </tr>';
-
-        message +='   <tr><td height="28"></td></tr>';
-
-        message +='   <tr>';
-        message +='   <td valign="top" align="center">';
-        message +='  <div class="contentEditableContainer contentTextEditable">';
-        message +='      <div class="contentEditable" style="color:#A8B0B6; font-weight:bold;font-size:13px;line-height: 30px;">';
-        message +='     <p >Viewfoo Pro</p>';
-        message +='    </div>';
-        message +='    </div>';
-        message +='   <div class="contentEditableContainer contentTextEditable">';
-        message +='     <div class="contentEditable" style="color:#A8B0B6; font-size:13px;line-height: 15px;">';
-        message +='      <p >STREET 1 ,Salt lake City,Utah,Us</p>';
-        message +='      </div>';
-        message +='    </div>';
-
-        message +='  </td>';
-        message +='</tr>';
-        message +='  </table>';
-        message +=' </div>';
-
-
-        message +='</td>';
-        message +='</tr>   ';
-
-
-
-        message +='<tr><td height="28">&nbsp;</td></tr>';
-
-        message +='</table>';
-        message +='</td>';
-        message +='<td height="130" bgcolor="#43474A">&nbsp;</td>';
-        message +='</tr>';
-
-        message +='<tr>';
-        message +='<td class="bgBody">  &nbsp;</td>';
-        message +='<td class="bgBody">  &nbsp;</td>';
-        message +='</tr>';
-
-
-
-
-        message +='</table>';
-
-        message +='</body>';
-        message +='</html>';
+        message += 'table.footer-wrap a { color: #999999; }';
+        message += 'h1,h2,h3 { color: #111111;font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;font-weight: 200;line-height: 1.2em;margin: 40px 0 10px; }';
+        message += 'h1 { font-size: 36px; }';
+        message += 'h2 { font-size: 28px; }';
+        message += 'h3 { font-size: 22px; }';
+        message += 'p,ul,ol {font-size: 14px; font-weight: normal;margin-bottom: 10px; }';
+        message += 'ul li, ol li {margin-left: 5px;list-style-position: inside;}';
+        message += '.container {clear: both !important;display: block !important;Margin: 0 auto !important;max-width: 600px !important;}';
+        message += '.body-wrap .container { padding: 20px; }';
+        message += '.content {display: block;margin: 0 auto;max-width: 600px;}';
+        message += '.content table { width: 100%;}';
+        message += '</style>';
+        message += '</head>';
+        message += '<body bgcolor="#f6f6f6;-webkit-font-smoothing: antialiased;height: 100%;-webkit-text-size-adjust: none;width: 100% !important;">';
+        message += '<table class="body-wrap" bgcolor="#f6f6f6"  style="width:100%;">';
+        message += '<tr>';
+        message += '<td></td>';
+        message += '<td class="container" bgcolor="#FFFFFF">';
+        message += '<div class="content">';
+        message += '<table>';
+        message += '<tr>';
+        message += '<td>';
+        message += '<p><img src="'+ sails.config.frontsiteUrl +'/img/logo_viewfoo.png" alt="Compagnie logo" data-default="placeholder" data-max-width="300"  height="40"></p>';
+        message += '<p></p>';
+        message += '<h1>' + data.messageHeading + '</h1>';
+        message += '<p></p>';
+        message += '<h2></h2>';
+        message += '<p>' + data.content + '</p>';
+        message += '<table class="btn-primary" cellpadding="0" cellspacing="0" border="0">';
+        message += '<tr>';
+        message += '<td>';
+        message += '<a target="_blank" style="padding:8px;background:#006699;font-size:13px;color:#ffffff;text-decoration:none;font-weight:bold;" href="' + sails.config.siteUrl + '">' + sails.config.sitename + ' →</a>';
+        message += '</td>';
+        message += '</tr>';
+        message += '</table>';
+        message += '<p></p>';
+        message += '<p></p>';
+        message += '<p></p>';
+        message += '</td>';
+        message += '</tr>';
+        message += '</table>';
+        message += '</div>';
+        message += '</td>';
+        message += '<td></td>';
+        message += '</tr>';
+        message += '</table>';
+        message += '<table class="footer-wrap">';
+        message += '<tr>';
+        message += '<td></td>';
+        message += '<td class="container">';
+        message += ' <div class="content">';
       
+        message += '</div>';
+        message += '</td>';
+        message += '<td></td>';
+        message += '</tr>';
+        message += '</table>';
+        message += '</body>';
+        message += '</html>';
+
         return message;
+
     }
 };
