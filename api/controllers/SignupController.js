@@ -5,12 +5,12 @@ module.exports = {
 
         var validateRegister = validationServiceV1.validateRegister(registerData);
         if (!validateRegister.status) {
-            res.status = validateRegister.statusCode;
+           res.status(data.statusCode);
             return res.send(validateRegister);
         } else {
             Users.Register(registerData, function (data, log) {
                 var active = mailService.sendActiveLink(registerData);
-                res.status = data.statusCode;
+                res.status(data.statusCode);
                 return res.send(data);
             });
         }
@@ -20,8 +20,8 @@ module.exports = {
     UserActivation: function (req, res) {
         var avtivelink = {activationlink: req.param("id")};
         Users.activeAccount(avtivelink, function (data, log) {
-            res.status = data.statusCode;
-            ;
+            res.status(data.statusCode);
+            
             res.send(data);
         });
     }
