@@ -88,8 +88,8 @@ module.exports = {
         formValidation:501,
         normalError:403
     },
-    siteUrl:'http://192.168.0.3:1337',
-    sitename:"Viewfoo Pro",,
+    siteUrl:'http://162.243.236.138:1337',
+    sitename:"Viewfoo Pro",
     frontsiteUrl:"http://viewfoo.logisticinfotech.com/"
     
 
