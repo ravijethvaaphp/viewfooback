@@ -43,6 +43,8 @@ module.exports = {
         })
     },
     ForgotPass: function (forgotData, cb) {
+        
+        
         var userDataEmail;
         Users.find(forgotData).exec(function (err, data) {
             if (err) {
@@ -94,7 +96,43 @@ module.exports = {
                 });
             }
         })
+    },
+    activeAccount: function(activeData,cb){
+        
+        Users.findOne(activeData).exec(function(err,data){
+            console.log(data);
+            if(err){
+                return cb({status: false,
+                    message: "Problem with service",
+                    statusCode: sails.config.statusCodes.noResponse
+                });
+            }
+            
+            if(typeof data != "undefined"){
+                
+                Users.update(activeData,{active:"1",activationlink:""}).exec(function afterwards(err, updated){
+                    
+                    console.log("update: ",updated);
+                    if(err){
+                        return cb({ status:false,message:" Somthing wrong, your account not activated ",statusCode: sails.config.statusCodes.noResponse});
+                    }else{
+                        return cb({ status:true,message:"Your account activate successfully",statusCode: sails.config.statusCodes.response});
+                    }
+                });
+                
+            }else{
+                
+                 cb({status: false,
+                    message: "We are unable recognize your activation link",
+                    statusCode: sails.config.statusCodes.normalError
+                });
+            }
+            
+        });
     }
 
+    
+    
+    
 
 }
