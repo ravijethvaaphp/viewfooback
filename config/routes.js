@@ -25,22 +25,22 @@ module.exports.routes = {
  
 
 
-  "post signup/register": {
+  "post /signup/register": {
    controller: "SignupController",
    action: "RegisterUser",
    
 },
-  "post auth/login": {
+  "post /auth/login": {
    controller: "AuthController",
    action: "Login",
   
 },
- "post profile/forgotpassword": {
+ "post /profile/forgotpassword": {
    controller: "ProfileController",
-   action: "ForgotPass"
+   action: "ForgotPass",
    
 },
-"get signup/useractivation/:id": {
+"get /signup/useractivation/:id": {
    controller: "SignupController",
    action: "UserActivation",
 }
