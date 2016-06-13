@@ -37,7 +37,7 @@ module.exports.routes = {
 },
  "post profile/forgotpassword": {
    controller: "ProfileController",
-   action: "ForgotPass",
+   action: "ForgotPass"
    
 },
 "get signup/useractivation/:id": {
